@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+<!--  đây là bean phụ để import các class -->
+<!--  đây là khung chứa class
+
+	không cho người dùng lấy class -->
+<!-- chỉ đường dẫn bean tới NhanVien -->
+<!-- factory-method="creatNhanVien" -->
+<!-- <bean name="NhanVien" class="com.tuan.Entity.NhanVien" init-method="Start" destroy-method="Destroy" >
+ --><!--        <property name="tenNV" value="tuan"/>
+       <property name="age" value="18"></property> -->
+<!-- </bean> -->
+<!--1  <bean id="nv1" factory-bean="NhanVien" factory-method="createNhanVien">
+ 
+ </bean>
+<bean id="TestIoC" class="com.tuan.Entity.TestIoC"/> -->
+<!-- connect database mysql -->
+<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+  <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+  <property name="url" value="jdbc:mysql://localhost:3306/TestDB"/>
+  <property name="username" value="root"/>
+  <property name="password" value="shaiya01"/>
+</bean> -->
+
+<!--2 3 sử dụng contructor -->
+
+<!--  <bean id="NhanVien" class="com.tuan.Entity.NhanVien" destroy-method="Destroy" init-method="Start">
+  số lượng contructor trong bean tương ứng với contructor trong class NhanVien 
+	 <constructor-arg value="Tuan"/>
+	<constructor-arg value="chua biet"/>
+	<constructor-arg value="23"/> 
+	
+	  constructor-arg ref tới giám đốc
+	4 <constructor-arg ref="GiamDoc"/>
+</bean>-->
+<!-- <bean id="GiamDoc" class="com.tuan.Entity.GiamDoc" destroy-method="Destroy" init-method="Start">
+	<constructor-arg value="GiamDoc"/>
+	<constructor-arg value="Tuan"/>
+	<constructor-arg value="lao công"/>
+	<constructor-arg value="23"/>
+</bean>
+<bean id="GiamDoc1" class="com.tuan.Entity.GiamDoc" destroy-method="Destroy" init-method="Start">
+	<constructor-arg value="GiamDoc"/>
+	<constructor-arg value="Tuan"/>
+	<constructor-arg value="lao công"/>
+	<constructor-arg value="23"/>
+</bean>
+<bean id="GiamDoc2" class="com.tuan.Entity.GiamDoc" destroy-method="Destroy" init-method="Start">
+	<constructor-arg value="GiamDoc"/>
+	<constructor-arg value="Tuan"/>
+	<constructor-arg value="lao công"/>
+	<constructor-arg value="23"/>
+</bean>	 -->
+<!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+<!-- gắn List cho bean -->
+ <!-- <bean id="NhanVien" class="com.tuan.Entity.NhanVien" destroy-method="Destroy" init-method="Start">
+	<constructor-arg ref="GiamDoc"/>
+	<property name="map">
+	 
+		8  duyệt map theo entry key
+		<map>
+			<entry key="key1" value="abc"/>
+			<entry key="key2" value-ref="GiamDoc"/>
+		</map>
+	7 dùng list duyệt bean
+	<property name="list">
+	<list>
+	7 duyệt list đã có bean
+	<ref bean="GiamDoc"/> 
+	<ref bean="GiamDoc1"/>
+	<ref bean="GiamDoc2"/>
+	5 duyệt list chưa gán bean ref
+	<value>Đặng Mạnh Tuấn 1</value>
+	<value>Đặng Mạnh Tuấn 2</value>
+	<value>Đặng Mạnhs Tuấn 3</value>
+	 
+	</list>
+	</property>
+	phần này để kết nối csdl
+	<property name="properties">
+		<props>
+			<prop key="jdbc">mysql</prop>
+			<prop key="user">tuan</prop>
+			<prop key="password">123456</prop>
+		</props>
+	</property> 
+</bean> -->
+<!-- dùng Inner bean -->
+<!-- <bean id="doc" class="com.tuan.Entity.GiamDoc">
+	 số lượng contructor trong bean tương ứng với contructor trong class NhanVien 
+	 <constructor-arg value="Tuan"/>
+	<constructor-arg name="chucvu" value="chua biet"/>
+	<constructor-arg name="age" value="23"/> 
+	
+	 constructor-arg ref tới giám đốc
+	 <constructor-arg ref="NhanVien"/>
+</bean>
+<bean id="NhanVien" class="com.tuan.Entity.NhanVien" scope="prototype" autowire="byName">
+	<property name="doc">
+		<bean class="com.tuan.Entity.GiamDoc">
+			<property name="chucvu" value="Ô sin cao cấp" />
+		</bean>
+	</property>
+	</bean> -->
+	
+	<!-- 12: Custome loader -->
+	<bean id="CustomeLoader" class="com.tuan.Controller.CustomeLoader" autowire="byType" >
+	
+	</bean>
+</beans>
